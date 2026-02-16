@@ -5,189 +5,129 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hustensaft Team</title>
     <style>
-        /* CSS - HUSTENSAFT BRANDING (GELB/SCHWARZ) */
         :root {
-            --hustensaft-gelb: #FFD700;
-            --hustensaft-schwarz: #000000;
-            --hustensaft-grau: #1a1a1a;
-            --text-weiss: #ffffff;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            --gelb: #FFD700;
+            --schwarz: #000000;
+            --grau: #111111;
         }
 
         body {
-            background-color: var(--hustensaft-schwarz);
-            color: var(--text-weiss);
-            padding: 50px 20px;
+            background-color: var(--schwarz);
+            color: white;
+            font-family: 'Inter', Arial, sans-serif;
+            margin: 0;
+            padding: 40px 5%;
         }
 
-        .container {
-            max-width: 1200px;
+        h1 {
+            color: var(--gelb);
+            text-align: center;
+            text-transform: uppercase;
+            font-size: clamp(2rem, 8vw, 4rem);
+            margin-bottom: 50px;
+            font-weight: 900;
+        }
+
+        /* BigTimeFM Style Grid */
+        #team-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 10px;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
-        header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        header h1 {
-            font-size: 3rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--hustensaft-gelb);
-            margin-bottom: 10px;
-        }
-
-        header p {
-            color: #888;
-            font-size: 1.1rem;
-        }
-
-        /* GRID SYSTEM (Wie bigtimefm) */
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .team-card {
-            background-color: var(--hustensaft-grau);
+        .card {
+            background: var(--grau);
+            border: 1px solid #222;
+            transition: all 0.3s ease;
             position: relative;
-            overflow: hidden;
-            transition: transform 0.3s ease, border 0.3s ease;
-            border: 2px solid transparent;
-            cursor: pointer;
         }
 
-        .team-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--hustensaft-gelb);
+        .card:hover {
+            border-color: var(--gelb);
+            transform: translateY(-5px);
+            z-index: 10;
         }
 
-        .image-container {
+        .img-wrapper {
             width: 100%;
             aspect-ratio: 1/1;
             overflow: hidden;
-            background-color: #333;
+            filter: grayscale(1);
+            transition: filter 0.4s ease;
         }
 
-        .image-container img {
+        .card:hover .img-wrapper {
+            filter: grayscale(0);
+        }
+
+        .img-wrapper img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: grayscale(100%);
-            transition: filter 0.3s ease;
         }
 
-        .team-card:hover img {
-            filter: grayscale(0%);
-        }
-
-        .info-container {
+        .info {
             padding: 20px;
-            text-align: left;
+        }
+
+        .role {
+            color: var(--gelb);
+            font-size: 0.75rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: block;
+            margin-bottom: 8px;
         }
 
         .name {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--hustensaft-gelb);
-            margin-bottom: 5px;
-            display: block;
-        }
-
-        .position {
-            font-size: 0.9rem;
-            color: #ccc;
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin-bottom: 10px;
             text-transform: uppercase;
-            margin-bottom: 15px;
-            display: block;
         }
 
         .bio {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
+            color: #888;
             line-height: 1.5;
-            color: #bbb;
-        }
-
-        /* Responsive Fix */
-        @media (max-width: 600px) {
-            header h1 { font-size: 2rem; }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <header>
-            <h1>Das Hustensaft Team</h1>
-            <p>Die Köpfe hinter der Brand.</p>
-        </header>
-
-        <div id="team-wrapper" class="team-grid">
-            </div>
-    </div>
+    <h1>The Crew</h1>
+    <div id="team-container"></div>
 
     <script>
-        // DIE DATEN IN EINER JSON-STRUKTUR
-        const teamData = [
-            {
-                "id": 1,
-                "name": "Der Owner",
-                "position": "Founder & CEO",
-                "bio": "Visionär und Inhaber der Hustensaft-Gruppe. Leitet die strategische Entwicklung.",
-                "image_url": "https://i.pravatar.cc/400?u=hustensaft1"
-            },
-            {
-                "id": 2,
-                "name": "Sarah Creative",
-                "position": "Art Director",
-                "bio": "Verantwortlich für das visuelle Erscheinungsbild und das Design von Hustensaft.org.",
-                "image_url": "https://i.pravatar.cc/400?u=hustensaft2"
-            },
-            {
-                "id": 3,
-                "name": "Marc Tech",
-                "position": "Head of Hosting",
-                "bio": "Experte für Infrastruktur und High-Performance Lösungen im Hustensaft Management.",
-                "image_url": "https://i.pravatar.cc/400?u=hustensaft3"
-            },
-            {
-                "id": 4,
-                "name": "Julia Social",
-                "position": "Brand Manager",
-                "bio": "Verknüpft die Community mit der Brand und steuert das Marketing-Movement.",
-                "image_url": "https://i.pravatar.cc/400?u=hustensaft4"
-            }
-        ];
+        // Lädt die JSON-Datei
+        async function loadTeam() {
+            try {
+                const response = await fetch('team.json');
+                const data = await response.json();
+                const container = document.getElementById('team-container');
 
-        // LOGIK ZUM RENDERN
-        function renderTeam() {
-            const wrapper = document.getElementById('team-wrapper');
-            
-            wrapper.innerHTML = teamData.map(member => `
-                <div class="team-card">
-                    <div class="image-container">
-                        <img src="${member.image_url}" alt="${member.name}">
+                container.innerHTML = data.map(member => `
+                    <div class="card">
+                        <div class="img-wrapper">
+                            <img src="${member.img}" alt="${member.name}">
+                        </div>
+                        <div class="info">
+                            <span class="role">${member.role}</span>
+                            <div class="name">${member.name}</div>
+                            <p class="bio">${member.bio}</p>
+                        </div>
                     </div>
-                    <div class="info-container">
-                        <span class="name">${member.name}</span>
-                        <span class="position">${member.position}</span>
-                        <p class="bio">${member.bio}</p>
-                    </div>
-                </div>
-            `).join('');
+                `).join('');
+            } catch (error) {
+                console.error('Fehler beim Laden der Team-Daten:', error);
+                document.getElementById('team-container').innerHTML = "<p>Team-Daten konnten nicht geladen werden.</p>";
+            }
         }
 
-        // Seite initialisieren
-        document.addEventListener('DOMContentLoaded', renderTeam);
+        loadTeam();
     </script>
-
 </body>
 </html>
