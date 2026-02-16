@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hustensaft Team</title>
+    <style>
+        /* CSS - HUSTENSAFT BRANDING (GELB/SCHWARZ) */
+        :root {
+            --hustensaft-gelb: #FFD700;
+            --hustensaft-schwarz: #000000;
+            --hustensaft-grau: #1a1a1a;
+            --text-weiss: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--hustensaft-schwarz);
+            color: var(--text-weiss);
+            padding: 50px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--hustensaft-gelb);
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: #888;
+            font-size: 1.1rem;
+        }
+
+        /* GRID SYSTEM (Wie bigtimefm) */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .team-card {
+            background-color: var(--hustensaft-grau);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, border 0.3s ease;
+            border: 2px solid transparent;
+            cursor: pointer;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--hustensaft-gelb);
+        }
+
+        .image-container {
+            width: 100%;
+            aspect-ratio: 1/1;
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%);
+            transition: filter 0.3s ease;
+        }
+
+        .team-card:hover img {
+            filter: grayscale(0%);
+        }
+
+        .info-container {
+            padding: 20px;
+            text-align: left;
+        }
+
+        .name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--hustensaft-gelb);
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .position {
+            font-size: 0.9rem;
+            color: #ccc;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .bio {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #bbb;
+        }
+
+        /* Responsive Fix */
+        @media (max-width: 600px) {
+            header h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Das Hustensaft Team</h1>
+            <p>Die Köpfe hinter der Brand.</p>
+        </header>
+
+        <div id="team-wrapper" class="team-grid">
+            </div>
+    </div>
+
+    <script>
+        // DIE DATEN IN EINER JSON-STRUKTUR
+        const teamData = [
+            {
+                "id": 1,
+                "name": "Der Owner",
+                "position": "Founder & CEO",
+                "bio": "Visionär und Inhaber der Hustensaft-Gruppe. Leitet die strategische Entwicklung.",
+                "image_url": "https://i.pravatar.cc/400?u=hustensaft1"
+            },
+            {
+                "id": 2,
+                "name": "Sarah Creative",
+                "position": "Art Director",
+                "bio": "Verantwortlich für das visuelle Erscheinungsbild und das Design von Hustensaft.org.",
+                "image_url": "https://i.pravatar.cc/400?u=hustensaft2"
+            },
+            {
+                "id": 3,
+                "name": "Marc Tech",
+                "position": "Head of Hosting",
+                "bio": "Experte für Infrastruktur und High-Performance Lösungen im Hustensaft Management.",
+                "image_url": "https://i.pravatar.cc/400?u=hustensaft3"
+            },
+            {
+                "id": 4,
+                "name": "Julia Social",
+                "position": "Brand Manager",
+                "bio": "Verknüpft die Community mit der Brand und steuert das Marketing-Movement.",
+                "image_url": "https://i.pravatar.cc/400?u=hustensaft4"
+            }
+        ];
+
+        // LOGIK ZUM RENDERN
+        function renderTeam() {
+            const wrapper = document.getElementById('team-wrapper');
+            
+            wrapper.innerHTML = teamData.map(member => `
+                <div class="team-card">
+                    <div class="image-container">
+                        <img src="${member.image_url}" alt="${member.name}">
+                    </div>
+                    <div class="info-container">
+                        <span class="name">${member.name}</span>
+                        <span class="position">${member.position}</span>
+                        <p class="bio">${member.bio}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Seite initialisieren
+        document.addEventListener('DOMContentLoaded', renderTeam);
+    </script>
+
+</body>
+</html>
