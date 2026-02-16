@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Hustensaft / Max",
+    "role": "Chef / Owner",
+    "bio": "Visionär und Inhaber der Hustensaft-Gruppe.",
+    "img": "https://i.pravatar.cc/500?u=chef1"
+  },
+  {
+    "name": "BTFM Lucas",
+    "role": "Chef / Owner",
+    "bio": "Leitung der strategischen Ausrichtung.",
+    "img": "https://i.pravatar.cc/500?u=chef2"
+  },
+  {
+    "name": "ezFambos",
+    "role": "Co-Chef",
+    "bio": "Operatives Management und Koordination.",
+    "img": "https://i.pravatar.cc/500?u=cochef1"
+  },
+  {
+    "name": "Badschu",
+    "role": "Co-Chef",
+    "bio": "Zuständig für Brand-Expansion und Marketing.",
+    "img": "https://i.pravatar.cc/500?u=cochef2"
+  },
+  {
+    "name": "DEV | Moritz",
+    "role": "Developer",
+    "bio": "Verantwortlich für die technische Infrastruktur.",
+    "img": "https://i.pravatar.cc/500?u=dev1"
+  },
+  {
+    "name": "Baruko",
+    "role": "Moderator",
+    "bio": "Community Management und Support-Leitung.",
+    "img": "https://i.pravatar.cc/500?u=mod1"
+  },
+  {
+    "name": "Nils",
+    "role": "Moderator",
+    "bio": "Sicherheit und Moderation der Plattformen.",
+    "img": "https://i.pravatar.cc/500?u=mod2"
+  }
+]
